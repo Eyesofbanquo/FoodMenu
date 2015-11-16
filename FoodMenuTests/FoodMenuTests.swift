@@ -20,6 +20,23 @@ class FoodMenuTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
+    /* Tests to make sure that the initializer still returns even when the rating is negative 
+        and because the name is empty*/
+    func testMealInitialization(){
+        
+        //success cases
+        let potentialMeal = Meal(name: "Newest Meal", image: nil, rating: 5)
+        //let potenil = Meal(name: "Ok",
+        XCTAssertNotNil(potentialMeal)
+        
+        //failures
+        let noName = Meal(name: "", image: nil, rating: 5)
+        XCTAssertNil(noName)
+        
+        let badRating = Meal(name: "Really bad rating", image: nil, rating: -1)
+        XCTAssertNil(badRating, "Negative ratings are invalid, be positive")
+        
+    }
     
     func testExample() {
         // This is an example of a functional test case.
